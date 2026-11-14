@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volkswagen - Registro y Contacto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+            
+            /* Fondo consistente con el sitio */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                                url('elemplodeofrenda.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* Contenedor principal con efecto cristal */
+        .info-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .car-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+
+        /* Estilos de la tabla de datos */
+        .form-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            text-align: left;
+        }
+
+        .form-table td {
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Bordes redondeados en los extremos de cada fila de la tabla */
+        .form-table td:first-child {
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            width: 38%;
+            font-weight: 600;
+            color: #ffd700;
+            font-size: 1.05rem;
+        }
+
+        .form-table td:last-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+            width: 62%;
+        }
+
+        /* Estilos para los campos de texto y listas desplegables */
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-control::placeholder {
+            color: #cccccc;
+        }
+
+        .form-control:focus {
+            border-color: #ffd700;
+            background-color: rgba(0, 0, 0, 0.45);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Estilo para las opciones dentro de las listas desplegables */
+        .form-control option {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* Botón Contactar */
+        .btn-contactar {
+            margin-top: 20px;
+            padding: 13px 40px;
+            background-color: #001e50;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-contactar:hover {
+            background-color: #ffffff;
+            color: #001e50;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Botón Volver abajo a la derecha (fuera del contenedor) */
+        .buttons-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-volver {
+            padding: 10px 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background-color: #ffffff;
+            color: #333333;
+            transform: translateY(-2px);
+        }
+
+        /* Adaptación para celulares */
+        @media (max-width: 600px) {
+            .form-table, .form-table tbody, .form-table tr, .form-table td {
+                display: block;
+                width: 100%;
+            }
+            .form-table td:first-child {
+                border-radius: 12px 12px 0 0;
+                border-bottom: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.15);
+                padding-bottom: 5px;
+            }
+            .form-table td:last-child {
+                border-radius: 0 0 12px 12px;
+                border-top: none;
+                border-left: 1px solid rgba(255, 255, 255, 0.15);
+                padding-top: 5px;
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="info-container">
+            <h1 class="car-title">Solicitud de Cotización</h1>
+            <p class="subtitle">Ingresa tus datos y selecciona el vehículo de tu interés para contactarte</p>
+
+            <form id="contactForm">
+                <table class="form-table">
+                    <tbody>
+                        <!-- Nombre del comprador -->
+                        <tr>
+                            <td><label for="nombre">Nombre del comprador:</label></td>
+                            <td>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
+                            </td>
+                        </tr>
+
+                        <!-- Lista desplegable de Modelos -->
+                        <tr>
+                            <td><label for="modelo">Modelo:</label></td>
+                            <td>
+                                <select id="modelo" name="modelo" class="form-control" required>
+                                    <option value="" disabled selected>-- Selecciona un modelo --</option>
+                                    <!-- Puedes agregar o quitar modelos copiando y pegando una línea <option> -->
+                                    <option value="Volkswagen Tera">Volkswagen Tera</option>
+                                    <option value="Volkswagen Jetta (Sedán)">Volkswagen Jetta (Sedán)</option>
+                                    <option value="Volkswagen Taigun (SUV)">Volkswagen Taigun (SUV)</option>
+                                    <option value="Volkswagen Taos (SUV)">Volkswagen Taos (SUV)</option>
+                                    <option value="Volkswagen Tiguan (SUV)">Volkswagen Tiguan (SUV)</option>
+                                    <option value="Volkswagen Golf GTI">Volkswagen Golf GTI (Hatchback Deportivo)</option>
+                                    <option value="Volkswagen Teramont">Volkswagen Teramont (SUV Grande)</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- Número de teléfono -->
+                        <tr>
+                            <td><label for="telefono">Número de teléfono:</label></td>
+                            <td>
+                                <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ej. 222 123 4567" required>
+                            </td>
+                        </tr>
+
+                        <!-- Lista desplegable de Forma de pago -->
+                        <tr>
+                            <td><label for="pago">Forma de pago:</label></td>
+                            <td>
+                                <select id="pago" name="pago" class="form-control" required>
+                                    <option value="" disabled selected>-- Selecciona una opción --</option>
+                                    <option value="debito">Débito</option>
+                                    <option value="credito">Crédito</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Botón Contactar -->
+                <button type="submit" class="btn-contactar">Contactar</button>
+            </form>
+        </div>
+
+        <!-- Botón Volver afuera de todo el contenedor, abajo a la derecha -->
+        <div class="buttons-footer">
+            <a href="index.html" class="btn-volver">Volver</a>
+        </div>
+    </div>
+
+</body>
+</html>

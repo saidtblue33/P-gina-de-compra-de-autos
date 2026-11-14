@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volkswagen Golf GTI - Detalles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+            
+            /* Fondo consistente con el sitio */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                              url('elemplodeofrenda.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Contenedor general */
+        .page-container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Contenedor principal de la información y la imagen */
+        .info-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Sección de la imagen */
+        .car-image-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .car-img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sección del texto */
+        .car-details-box {
+            flex: 1.2;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .car-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .car-spec {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #f0f0f0;
+        }
+
+        .car-spec strong {
+            color: #ffd700; /* Destacado amarillo sutil */
+        }
+
+        .car-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #4cd137;
+            margin-top: 5px;
+        }
+
+        .car-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 12px;
+            margin-top: 5px;
+        }
+
+        /* Contenedor para los botones inferiores fuera de la tarjeta principal */
+        .buttons-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Botón de Financiamiento (Centrado exacto) */
+        .btn-financiamiento {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 30px;
+            background-color: #001e50;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-financiamiento:hover {
+            background-color: #ffffff;
+            color: #001e50;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Botón Volver (Abajo a la derecha) */
+        .btn-volver {
+            margin-left: auto;
+            padding: 12px 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background-color: #ffffff;
+            color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Ajustes responsivos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .info-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .buttons-footer {
+                flex-direction: column-reverse;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .btn-financiamiento {
+                position: static;
+                transform: none;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-financiamiento:hover {
+                transform: translateY(-2px);
+            }
+
+            .btn-volver {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <!-- Contenedor principal: Imagen y Texto -->
+        <div class="info-container">
+            <!-- Imagen del Automóvil -->
+            <div class="car-image-box">
+                <!-- Reemplaza 'img/golf.jpg' con la ruta de tu imagen -->
+                <img src="Volkswagen Golf GTI (Hatchback Deportivo)1.jpg" alt="Volkswagen Golf GTI" class="car-img">
+            </div>
+
+            <!-- Información del Automóvil -->
+            <div class="car-details-box">
+                <h1 class="car-title">Volkswagen Golf GTI (Hatchback Deportivo)</h1>
+                <p class="car-spec"><strong>Categoría:</strong> Hot Hatch / Deportivo</p>
+                <p class="car-spec"><strong>Descripción:</strong> Icono deportivo de alto rendimiento con motor 2.0L Turbo TSI, transmisión DSG y orientada al manejo dinámico.</p>
+                <p class="car-price">Precio desde: ~$857,990 MXN</p>
+                
+                <p class="car-description">
+                    La leyenda de los 'Hot Hatches': adrenalina pura en empaque de precisión. El GTI no es solo un auto, es una experiencia de manejo impulsada por su motor 2.0 Turbo y una respuesta de chasis calibrada para la pista. Mantiene la practicidad de un hatchback diario, pero al pisar el acelerador se transforma en una máquina de emociones y deportividad pura.
+                </p>
+            </div>
+        </div>
+
+        <!-- Botones fuera del contenedor principal -->
+        <div class="buttons-footer">
+            <!-- Botón Financiamiento centrado -->
+            <a href="fgolfGTI.html" class="btn-financiamiento">Financiamiento</a>
+            
+            <!-- Botón Volver a la derecha -->
+            <a href="index.html" class="btn-volver">Volver</a>
+        </div>
+    </div>
+
+</body>
+</html>
